@@ -28,3 +28,15 @@ for i in range(r):
     for j in range(c):
         print(A[i][j] - B[i][j],end=" ")
         print()
+#Multiplition of two matrix
+print("Multiplition of A and B Matrix:")
+for i in range(r):
+    for j in range(c):
+        print(A[i][j] * B[i][j],end=" ")
+        print()
+#Diviition of two matrix
+print("Divition of A and B Matrix:")
+for i in range(r):
+    for j in range(c):
+        print(A[i][j] // B[i][j],end=" ")
+        print()
