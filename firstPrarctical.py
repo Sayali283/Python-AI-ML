@@ -1,44 +1,40 @@
 from collections import deque
 #imported a graph
 graph = {
-    "1": ["2", "3"],
-    "2": ["1", "4", "5"],
-    "3": ["1", "6"],
-    "4": ["2"],
-    "5": ["2"],
-    "6": ["3"]
+    "a": ["b", "c"],
+    "b": ["a", "d", "e"],
+    "c": ["a", "f"],
+    "d": ["b"],
+    "e": ["b"],
+    "f": ["c"]
 }
 #using BFS with Queue
-def bfs(graph, start):
-    visited = set()   
-    queue = deque([start])
+def bfs(start):
+    visited = []   
+    queue = [start]
 
     while queue:
-        node = queue.popleft()
+        node = queue.pop(0)
 
         if node not in visited:
-            print(node, end=" ")
-            visited.add(node)
+            visited.append(node)
 
             for neighbor in graph[node]:
                 if neighbor not in visited:
                     queue.append(neighbor)
+    return visited
 #using DFS with Stack
-def dfs(graph, node, visited=None):
-    if visited is None:
-        visited = set()
-
-    # Visit this node
-    print(node, end=" ")
-    visited.add(node)
+def dfs(node, visited):
+    visited.append(node)
 
     # Visit each connected node
     for neighbor in graph[node]:
         if neighbor not in visited:
-            dfs(graph, neighbor, visited)
+            dfs(neighbor, visited)
+    return visited
+    
+start='a'
 #printing the output
-print("BFS traversal:")
-bfs(graph, "1")
+print("BFS traversal:",bfs(start))
 
-print("\n\nDFS traversal:")
-dfs(graph, "1")
+print("DFS traversal:",dfs(start,[]))
